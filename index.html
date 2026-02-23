@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistem Kasir POS - Premium Edition</title>
-    
+
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#2ecc71">
     <link rel="apple-touch-icon" href="icon-192.png">
@@ -28,24 +28,23 @@
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         
-        /* LAYOUT UTAMA: Grid Responsif */
-        body { background-color: var(--bg); color: var(--text); padding: 10px; display: grid; grid-template-columns: 1fr 2fr; gap: 12px; max-width: 1400px; margin: 0 auto; align-items: start; width: 100%; overflow-x: hidden; }
-        .panel { background: var(--surface); padding: 15px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); margin-bottom: 12px; border: 1px solid rgba(0,0,0,0.03); width: 100%; }
+        body { background-color: var(--bg); color: var(--text); padding: 10px; display: grid; grid-template-columns: 1fr 2fr; gap: 12px; max-width: 1300px; margin: 0 auto; align-items: start; }
+        .panel { background: var(--surface); padding: 15px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); margin-bottom: 12px; border: 1px solid rgba(0,0,0,0.03); }
         .full-width { grid-column: 1 / -1; }
         
         h2 { margin-bottom: 12px; color: var(--primary); font-size: 1.1rem; border-bottom: 2px solid var(--border); padding-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
         
-        .header-toggle { cursor: pointer; user-select: none; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+        .header-toggle { cursor: pointer; user-select: none; display: flex; justify-content: space-between; align-items: center; }
         .panel-wrapper { display: grid; grid-template-rows: 1fr; transition: grid-template-rows 0.35s cubic-bezier(0.4, 0, 0.2, 1); }
         .panel-wrapper.collapsed { grid-template-rows: 0fr; }
         .panel-content { overflow: hidden; padding-top: 5px; }
 
-        .form-group { margin-bottom: 12px; width: 100%; }
+        .form-group { margin-bottom: 12px; }
         label { display: block; margin-bottom: 6px; font-weight: 700; font-size: 0.95rem; color: #444; }
         input, select { width: 100%; padding: 14px; border: 2px solid var(--border); border-radius: 8px; font-size: 1.15rem; font-weight: 600; color: #111; transition: all 0.2s ease; background: #fafafa; }
         input:focus, select:focus { border-color: var(--accent); outline: none; background: #fff; box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.15); }
         
-        button { background: var(--grad-primary); color: white; border: none; padding: 14px; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; transition: all 0.2s ease; font-size: 1.1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: flex; justify-content: center; align-items: center; text-align: center; }
+        button { background: var(--grad-primary); color: white; border: none; padding: 14px; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; transition: all 0.2s ease; font-size: 1.1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: flex; justify-content: center; align-items: center; }
         button:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.15); filter: brightness(1.1); }
         button:active { transform: translateY(0); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
         button.btn-success { background: var(--grad-success); }
@@ -53,48 +52,49 @@
         button.btn-warning { background: var(--grad-warning); color: #fff; }
         button.btn-edit { background: var(--grad-accent); color: white; }
         
-        /* BANNER TOKO: Teks Fleksibel dengan Clamp */
-        .shop-banner { background: var(--grad-success); color: #ffffff; border: 2px solid #000000; padding: 25px 15px; border-radius: 8px; box-shadow: 4px 4px 0px #000000; margin-bottom: 12px; text-align: center; font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 900; letter-spacing: 4px; text-transform: uppercase; text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; word-break: break-word; }
+        /* Banner Toko */
+        .shop-banner { background: var(--grad-success); color: #ffffff; border: 2px solid #000000; padding: 25px 15px; border-radius: 8px; box-shadow: 4px 4px 0px #000000; margin-bottom: 12px; text-align: center; font-size: 2.5rem; font-weight: 900; letter-spacing: 4px; text-transform: uppercase; text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; }
         
-        /* KONTROL TOKO */
+        /* Kontrol Toko */
         .shop-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
-        .btn-control { background: #ffffff; color: #000000; border: 2px solid #000000; border-radius: 6px; font-size: 0.85rem; font-weight: bold; padding: 12px 0; text-align: center; cursor: pointer; box-shadow: 2px 2px 0px #000000; transition: transform 0.1s; display: flex; align-items: center; justify-content: center; }
+        .btn-control { background: #ffffff; color: #000000; border: 2px solid #000000; border-radius: 6px; font-size: 0.85rem; font-weight: bold; padding: 12px 0; text-align: center; cursor: pointer; box-shadow: 2px 2px 0px #000000; transition: transform 0.1s; }
         .btn-control:active { transform: translate(2px, 2px); box-shadow: 0px 0px 0px #000000; }
 
-        .toggle-btn-std { font-size: 0.8rem; background: var(--border); color: var(--primary); padding: 5px 12px; border-radius: 4px; font-weight: bold; transition: 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.1); white-space: nowrap; }
+        .toggle-btn-std { font-size: 0.8rem; background: var(--border); color: var(--primary); padding: 5px 12px; border-radius: 4px; font-weight: bold; transition: 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
         .header-toggle:hover .toggle-btn-std { background: #cbd5e1; }
 
-        /* FLEX ROW: Responsif patah ke bawah di layar kecil */
-        .flex-row { display: flex; gap: 10px; align-items: flex-end; flex-wrap: wrap; }
-        .flex-row > div { flex: 1; min-width: 200px; }
+        .flex-row { display: flex; gap: 10px; align-items: flex-end; }
+        .flex-row > div { flex: 1; }
         .flex-row > button { flex: 0 0 auto; width: auto; padding: 14px 20px; }
 
-        .quick-qty { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
-        .quick-qty button { background: linear-gradient(135deg, #e2e8f0, #cbd5e1); color: var(--primary); padding: 12px; font-size: 1.1rem; flex: 1; min-width: 60px; border-radius: 6px; font-weight: bold; box-shadow: none; }
+        .quick-qty { display: flex; gap: 8px; margin-top: 8px; }
+        .quick-qty button { background: linear-gradient(135deg, #e2e8f0, #cbd5e1); color: var(--primary); padding: 12px; font-size: 1.1rem; width: 100%; border-radius: 6px; font-weight: bold; box-shadow: none; }
         .quick-qty button:hover { background: var(--border); transform: none; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
 
-        .search-container { position: relative; width: 100%; }
+        .search-container { position: relative; }
         #searchResults { position: absolute; top: 100%; left: 0; right: 0; background: white; border: 2px solid var(--accent); border-radius: 0 0 8px 8px; max-height: 300px; overflow-y: auto; display: none; z-index: 10; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
-        .search-item { padding: 16px 15px; cursor: pointer; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; font-size: 1.15rem; align-items: center; transition: background 0.2s; flex-wrap: wrap; gap: 10px; }
+        .search-item { padding: 16px 15px; cursor: pointer; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; font-size: 1.15rem; align-items: center; transition: background 0.2s; }
         .search-item:hover { background: #f4f9fcf5; border-left: 5px solid var(--accent); }
         
-        /* TABEL RESPONSIF */
-        .table-responsive { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 8px; }
+        .table-responsive { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
         table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.95rem; white-space: nowrap; table-layout: auto; }
         th, td { text-align: left; padding: 12px 10px; border-bottom: 1px solid var(--border); vertical-align: middle; }
         th { background: var(--grad-primary); color: white; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.5px; }
         
+        /* TOMBOL TABEL UKURAN PASTI (FIXED) */
         table button { width: 100px; height: 38px; padding: 0; font-size: 0.9rem; margin: 0 auto; }
         .action-cell { display: flex; gap: 8px; justify-content: center; align-items: center; }
         .action-cell button { width: 85px; }
 
         .totals { margin-top: 15px; padding-top: 15px; border-top: 2px dashed var(--border); background: #f8f9fa; padding: 15px; border-radius: 8px; border: 1px solid var(--border); }
-        .total-row { display: flex; justify-content: space-between; align-items: center; font-size: clamp(1rem, 3vw, 1.2rem); font-weight: bold; margin-bottom: 10px; flex-wrap: wrap; gap: 10px; }
-        .highlight { color: var(--success); font-size: clamp(1.4rem, 4vw, 1.6rem); text-shadow: 1px 1px 0px rgba(0,0,0,0.1); }
-        .deficit { color: var(--danger); font-size: clamp(1.4rem, 4vw, 1.6rem); }
+        .total-row { display: flex; justify-content: space-between; font-size: 1.2rem; font-weight: bold; margin-bottom: 10px; }
+        .highlight { color: var(--success); font-size: 1.6rem; text-shadow: 1px 1px 0px rgba(0,0,0,0.1); }
+        .deficit { color: var(--danger); font-size: 1.6rem; }
         
+        /* KOTAK SATUAN (BADGE) UKURAN PASTI (FIXED) */
         .badge { background: var(--grad-accent); color: white; border-radius: 6px; font-size: 0.85rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: inline-block; width: 80px; text-align: center; padding: 6px 0; font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         
+        /* KOTAK STATUS UKURAN PASTI (FIXED) */
         .status-badge { width: 140px; height: 35px; display: flex; align-items: center; justify-content: center; border-radius: 6px; font-size: 0.85rem; font-weight: bold; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin: 0 auto; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .status-lunas { background: var(--grad-success); color: white; }
         .status-hutang { background: var(--grad-danger); color: white; }
@@ -104,31 +104,31 @@
         #debtSection { display: none; background: #fff3cd; padding: 15px; border-left: 5px solid var(--warning); margin-top: 10px; border-radius: 8px; box-shadow: inset 0 0 10px rgba(0,0,0,0.05); }
 
         .daily-dashboard { background: var(--grad-primary); color: white; padding: 15px; border-radius: 10px; margin-bottom: 15px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; box-shadow: 0 6px 12px rgba(0,0,0,0.15); }
-        .dashboard-card { flex: 1; min-width: 140px; text-align: center; background: rgba(255,255,255,0.08); padding: 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15); }
-        .dashboard-value { font-size: clamp(1.2rem, 3vw, 1.5rem); font-weight: bold; margin-top: 5px; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); word-break: break-word; }
+        .dashboard-card { flex: 1; min-width: 150px; text-align: center; background: rgba(255,255,255,0.08); padding: 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15); }
+        .dashboard-value { font-size: 1.5rem; font-weight: bold; margin-top: 5px; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); }
         .val-success { color: #2ecc71; }
         .val-danger { color: #ff7675; }
 
         /* MODAL POP-UP PREMIUM */
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 9999; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: opacity 0.35s ease, visibility 0.35s ease; padding: 15px; }
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 9999; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: opacity 0.35s ease, visibility 0.35s ease; }
         .modal-overlay.active { opacity: 1; visibility: visible; }
-        .modal-box { background: #ffffff; padding: clamp(20px, 5vw, 30px); border-radius: 16px; width: 100%; max-width: 420px; transform: scale(0.95) translateY(-20px); opacity: 0; transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.35s ease; box-shadow: 0 20px 40px rgba(0,0,0,0.25); text-align: center; border: 1px solid rgba(255,255,255,0.8); max-height: 90vh; display: flex; flex-direction: column; }
+        .modal-box { background: #ffffff; padding: 30px; border-radius: 16px; width: 90%; max-width: 420px; transform: scale(0.95) translateY(-20px); opacity: 0; transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.35s ease; box-shadow: 0 20px 40px rgba(0,0,0,0.25); text-align: center; border: 1px solid rgba(255,255,255,0.8); }
         .modal-overlay.active .modal-box { transform: scale(1) translateY(0); opacity: 1; }
         .modal-title { font-size: 1.4rem; font-weight: 800; color: var(--primary); margin-bottom: 12px; text-transform: uppercase; }
-        .modal-message { font-size: 1.05rem; color: #444; margin-bottom: 25px; line-height: 1.6; font-weight: 500; overflow-y: auto; }
+        .modal-message { font-size: 1.05rem; color: #444; margin-bottom: 25px; line-height: 1.6; font-weight: 500; }
         
-        .modal-input { margin-bottom: 25px; display: none; width: 100%; }
-        .modal-input input { background: #f0f2f5; color: #000000; font-weight: bold; border: 2px solid var(--accent); box-shadow: inset 0 2px 4px rgba(0,0,0,0.05); width: 100%; }
+        .modal-input { margin-bottom: 25px; display: none; }
+        .modal-input input { background: #f0f2f5; color: #000000; font-weight: bold; border: 2px solid var(--accent); box-shadow: inset 0 2px 4px rgba(0,0,0,0.05); }
         
-        .modal-actions { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: auto; }
-        .modal-actions button { flex: 1; min-width: 120px; height: 50px; font-size: 1.05rem; padding: 0; }
+        .modal-actions { display: flex; justify-content: center; gap: 10px; }
+        .modal-actions button { width: 150px; height: 50px; font-size: 1.05rem; padding: 0; flex: none; }
 
-        .premium-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin-bottom: 15px; max-height: 40vh; overflow-y: auto; padding: 4px; }
+        .premium-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 15px; max-height: 250px; overflow-y: auto; padding: 2px; }
         .grid-item-btn { height: 55px; border-radius: 8px; border: 2px solid var(--border); background: #f8f9fa; color: var(--primary); font-weight: bold; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s ease; user-select: none; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
         .grid-item-btn:hover { background: #e1f0fa; border-color: var(--accent); transform: translateY(-2px); }
         .grid-item-btn.selected { background: var(--grad-accent); color: white; border-color: transparent; box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3); transform: translateY(-2px); }
         
-        .action-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; border-top: 2px dashed var(--border); padding-top: 15px; margin-top: auto; }
+        .action-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; border-top: 2px dashed var(--border); padding-top: 15px; }
         .grid-item-action { height: 55px; border-radius: 8px; font-weight: bold; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1); color: white; }
         .grid-item-action.batal { background: var(--grad-warning); }
         .grid-item-action.edit { background: var(--grad-primary); }
@@ -138,22 +138,11 @@
         .unit-selector-btn { background: #fafafa; color: #111; border: 2px solid var(--border); box-shadow: none; text-align: left; padding: 14px; display: flex; justify-content: space-between; align-items: center; }
         .unit-selector-btn:hover { border-color: var(--accent); background: #fff; transform: none; box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.15); }
 
-        /* --- MEDIA QUERIES UNTUK RESPONSIVITAS --- */
-        
-        /* TABLET & LAPTOP KECIL */
-        @media (max-width: 992px) { 
-            body { grid-template-columns: 1fr; } 
-            .flex-row > button { width: 100%; flex: none; margin-top: 5px; } 
-        }
-
-        /* MOBILE & SMARTPHONE */
+        /* Responsif Sederhana (Mengikuti Style Asli Lu) */
         @media (max-width: 768px) { 
-            .flex-row { flex-direction: column; align-items: stretch; }
-            .flex-row > div { width: 100%; }
-            .shop-banner { padding: 20px 10px; margin-bottom: 10px; }
-            .action-cell { flex-direction: column; } 
-            .action-cell button { width: 100%; }
-            #searchInventoryInput { width: 100%; }
+            body { grid-template-columns: 1fr; } 
+            .daily-dashboard { flex-direction: column; } 
+            .shop-banner { font-size: 2rem; } 
         }
     </style>
 </head>
@@ -371,8 +360,8 @@
                 </div>
                 
                 <div style="display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;">
-                    <button class="btn-warning" onclick="resetDashboard()" style="flex: 1; min-width: 200px; font-size: 1rem; padding: 12px 20px;">🔄 Tutup Shift (Rekap ke Riwayat)</button>
-                    <button class="btn-danger" onclick="clearHistory()" style="flex: 1; min-width: 200px; font-size: 1rem; padding: 12px 20px;">🗑️ Hapus Seluruh Riwayat</button>
+                    <button class="btn-warning" onclick="resetDashboard()" style="flex: 1; font-size: 1rem; padding: 12px 20px;">🔄 Tutup Shift (Rekap ke Riwayat)</button>
+                    <button class="btn-danger" onclick="clearHistory()" style="flex: 1; font-size: 1rem; padding: 12px 20px;">🗑️ Hapus Seluruh Riwayat</button>
                 </div>
 
                 <div class="table-responsive">
