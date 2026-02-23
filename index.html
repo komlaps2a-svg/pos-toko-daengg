@@ -528,7 +528,7 @@
         const formatRp = (angka) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(angka);
 
         // ==========================================
-        // 5. INISIALISASI DATA PERMANEN
+        // 5. INISIALISASI DATA PERMANEN (Aman Saat Update)
         // ==========================================
         let shopName = localStorage.getItem('pos_shop_name') || 'TOKO DAENG';
         document.getElementById('shopNameDisplay').innerText = shopName;
@@ -799,10 +799,15 @@
             const tbody = document.getElementById('debtList');
             const filtered = debts.filter(d => d.name.toLowerCase().includes(q.toLowerCase()));
             if(filtered.length === 0) { tbody.innerHTML = '<tr><td colspan="4" style="text-align:center; color:#7f8c8d; padding: 15px;">Belum ada data piutang.</td></tr>'; return; }
+            
+            // NOTE: Di sini warna biru "#007bff" dan font-weight "600" diterapkan pada d.name
             tbody.innerHTML = filtered.map(d => `
-                <tr><td style="font-size: 0.95rem;">${d.date}</td><td style="font-weight:bold; font-size: 1.05rem; color:var(--primary);">${d.name}</td>
-                <td style="font-weight:bold; font-size: 1.1rem; color:var(--danger);">${formatRp(d.amount)}</td>
-                <td style="text-align: center;"><button class="btn-success" onclick="payDebt(${d.id})">LUNAS</button></td></tr>
+                <tr>
+                    <td style="font-size: 0.95rem;">${d.date}</td>
+                    <td style="font-weight: 600; font-size: 1.05rem; color: #007bff;">${d.name}</td>
+                    <td style="font-weight:bold; font-size: 1.1rem; color:var(--danger);">${formatRp(d.amount)}</td>
+                    <td style="text-align: center;"><button class="btn-success" onclick="payDebt(${d.id})">LUNAS</button></td>
+                </tr>
             `).join('');
         }
 
@@ -934,16 +939,16 @@
         renderHistory();
 
         // ==========================================
-        // 11. REGISTRASI SERVICE WORKER (UNTUK PWA/OFFLINE)
+        // 11. REGISTRASI SERVICE WORKER (UNTUK OFFLINE/PWA)
         // ==========================================
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('./service-worker.js')
                 .then(registration => {
-                    console.log('Service Worker terdaftar dengan sukses:', registration.scope);
+                    console.log('Service Worker berhasil jalan:', registration.scope);
                 })
                 .catch(error => {
-                    console.log('Registrasi Service Worker gagal:', error);
+                    console.log('Service Worker gagal jalan:', error);
                 });
             });
         }
